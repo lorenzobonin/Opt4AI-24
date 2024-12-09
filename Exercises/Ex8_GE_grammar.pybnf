@@ -1,0 +1,11 @@
+# A function is defined, some code is contained, and the function is called
+<fc> ::= <deff>{::}<callf>
+
+# Function Definition. Initial parameters set, some code written, final
+# results return
+<deff> ::= def fun(li):{:m = 0{::}<code>{::}return m:}
+
+# Function call
+<callf> ::= max_val = fun(test_list)
+
+# DEFINE HERE YOUR GRAMMAR
