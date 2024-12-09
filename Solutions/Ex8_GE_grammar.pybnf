@@ -1,0 +1,45 @@
+# A function is defined, some code is contained, and the function is called
+<fc> ::= <deff>{::}<callf>
+
+# Function Definition. Initial parameters set, some code written, final
+# results return
+<deff> ::= def fun(li):{:m = 0{::}<code>{::}return m:}
+
+# Function call
+<callf> ::= max_val = fun(test_list)
+
+# A function is a series of statements
+<code> ::= <stmt> | <stmt>{::}<code>
+
+# A statement is either an assignment, logic statment or for-loop
+<stmt> ::= <var> = <expr> | <for> | <if> | <list-op>
+
+# For loop either loops over a list or an iterable range
+<for> ::= for i in <list-var>:{:<fl-code>:}
+<fl-code> ::= <fl-stmt> | <fl-stmt>{::}<fl-code>
+<fl-stmt> ::= <var> = <expr> | <fl-if>
+<fl-if> ::= if <cond>:<fl-if-opt>
+<fl-if-opt> ::= {:<fl-code>:} | {:<fl-code>:}else:{:<fl-code>:} | {:<fl-code>:}elif <cond>:{:<fl-if-opt>:}
+
+<var> ::= m | i
+<list-var> ::= li
+
+<number> ::= <num><num><num> | <num><num> | <num>
+<num> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+
+<op> ::= + | - | * | / | //
+
+# Logic operators
+<if> ::= if <cond>:<if-opt>
+<if-opt> ::= {:<code>:} | {:<code>:}else:{:<code>:} | {:<code>:}elif <cond>:<if-opt>
+
+<cond> ::= <expr> <c-op> <expr> | <expr> <c-op> <expr> and <cond> | <expr> <c-op> <expr> or <cond>
+<c-op> ::= "==" | "!=" | ">=" | "<=" | ">" | "<"
+
+# An expression is either a constant, function call, variable assignment,
+# arithmetic operation
+<expr> ::= <number> | <var> | <expr> <op> <expr> | len(<list-var>) | <list-var>[<neg><number>]
+
+# Efficient list operations include append, get and set item, len
+<list-op> ::= <list-var>.append(<expr>)
+<neg> ::= "" | -
